@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill Generator</title>
+    <style> 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            height: 100vh;
+            overflow: hidden; /* Ensure scrolling is within the layout */
+        }
+        .left {
+            width: 30%; /* Adjust to fit content */
+            background: #f9f9f9;
+            overflow-y: auto; /* Enable scrolling for long content */
+        }
+        .right {
+            width: 70%;
+            background: #70c1ff;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        ul {
+            list-style: none;
+            padding: 10px;
+        }
+        li {
+            width: 90%;
+            background: rgba(160, 235, 252, 0.51);
+            padding: 10px;
+            margin: 5px 0;
+        }
+        #opction {
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 1000;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        dl {
+            margin: 1rem;
+        }
+        dt {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        dd {
+            font-size: 1.5rem;
+            margin-left: 20px;
+        }
+        a {
+            text-decoration: none;
+        }
+        .highlight {
+            background-color: rgba(63, 1, 207, 0.69);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+   <aside class="left">
+       <div id="opction">
+           <ul> 
+               <a href="#one"><li>How to Generate bills</li></a>
+               <a href="#two"><li>How To Add Customer In Database</li></a>
+               <a href="#three"><li>How To delete Customer In Database</li></a>
+               <a href="#four"><li>How To add Product In Database</li></a>
+               <a href="#five"><li>How To delete Product In Database</li></a>
+               <a href="#six"><li>How To view previous bills detail</li></a>
+           </ul>
+       </div>
+   </aside>
+   <aside class="right">
+       <dl>
+           <dt id="one">How To Generate bills</dt>
+           <dd>In the home page, you find an option "Add New Bill". Click it, then fill in the details and click the print button to print the bill and the "send email" button if you want to send the bill details to the customer.</dd>
+           <br><br>
+           <dt id="two">How To Add Customer In Database</dt>
+           <dd>In the home page, you find an option "View Database" Click it, then click "view customer database"After that, a button named "add customer" will display. Click it, then fill in the customer registration form and submit it. You can verify by searching the customer's name in the database.</dd>
+           <br><br>
+           <dt id="three">How To delete Customer In Database</dt>
+           <dd>In the home page, you find an option "View Database" Click it, then click "view customer database" After that, a button named "delete customer" will display. Click it, then fill in the delete customer form and submit it. You can verify by searching the customer's name in the database.</dd>
+           <br><br>
+           <dt id="four">How To Add Product In Database</dt>
+           <dd>In the home page, you find an option "View Database" Click it, then click "view product database" After that, a button named "add product" will display. Click it, then fill in the add product form and submit it. You can verify by searching the product's name in the database.</dd>
+           <br><br>
+           <dt id="five">How To delete Product In Database</dt>
+           <dd>In the home page, you find an option "View Database" Click it, then click "view product database" After that, a button named "delete product" will display. Click it, then fill in the delete product form and submit it. You can verify by searching the product's name in the database.</dd>
+           <br><br>
+           <dt id="six">How To view previous bills detail</dt>
+           <dd>In the home page, you find an option "Fetch Bill Details" Click it, then you can view all the bills. You can filter the details using the customer's name or date.</dd>
+       </dl>
+   </aside>
+   <script>
+       document.querySelectorAll('a').forEach(anchor => {
+           anchor.addEventListener('click', function(event) {
+               // Prevent default anchor behavior
+               event.preventDefault();
+
+               // Remove existing highlights
+               document.querySelectorAll('dt').forEach(dt => dt.classList.remove('highlight'));
+
+               // Highlight the target
+               const targetId = this.getAttribute('href').substring(1);
+               const targetElement = document.getElementById(targetId);
+               if (targetElement) {
+                   targetElement.classList.add('highlight');
+                   targetElement.scrollIntoView({ behavior: 'smooth' });
+               }
+           });
+       });
+   </script>
+</body>
+</html>

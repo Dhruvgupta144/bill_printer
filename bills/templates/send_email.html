@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'billingbill144.css' %}">
+</head>
+<body>
+    <form id="bill-form" method="post" action="/bills/send_email_message/">
+        {% csrf_token %}
+        <input type="text" name="bill_number" id="bill-number" value="{{ bill_number }}"required readonly>
+        <input type="text" name="bill_date" id="bill-date" value="{{ bill_date }}" required readonly>
+        <input type="text" name="total_amount" id="total-amount" value="{{ total_amount }}" required readonly>
+        <input type="text" name="customer_name" placeholder="Enter Name" value="{{ customer_name }}" required readonly>
+        <input type="email" name="customer_email" placeholder="Enter Email" value="{{ customer_email }}" required readonly>
+        <br><br>
+        <button class="btn btn-print" type="submit" id="submit-button">Send Email</button>
+    </form>  
+    <script>
+        // Disable the button after it's clicked
+        document.getElementById("bill-form").addEventListener("submit", function(event) {
+            const submitButton = document.getElementById("submit-button");
+            submitButton.disabled = true;
+            submitButton.innerText = "Sending...";
+            setTimeout(() => {
+                submitButton.innerText = "Done!";
+            }, 3000);
+        });
+    </script>
+</body>
+</html>

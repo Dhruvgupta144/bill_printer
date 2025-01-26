@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill Generator</title>
+    <link rel="stylesheet" href="{% static 'billingbill144.css' %}">
+</head>
+<body>
+   
+<div >
+
+    <input type="text" id="paymentSearch" class="search" placeholder="Search for bills based on customer name or date..." onkeyup="filterProductTable()" >
+    <table id="bill_details">
+        <thead>
+            <tr>
+                <th>Bill Number</th>
+                <th>Date</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for use in bills %}
+            <tr>
+                <td>{{use.bill_number}}</td>
+                <td>{{use.date|date:"d-m-Y" }}</td>
+                <td>{{use.name}}</td>
+                <td>{{use.address}}</td>
+                <td>{{use.email}}</td>
+                <td>{{use.mobile}}</td>
+                <td>{{use.total_amount}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<script src="{% static 'view_bill11.js' %}"></script>
+</body>
+</html>

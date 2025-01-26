@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>apphome</title>
+    <link rel="stylesheet" href="{% static 'apphome.css' %}">
+</head>
+<body>
+    
+    <div class="navbar">
+        <li><button onclick=""><a href="bill"><b>Add New Bills</b></a></li>
+        <li><button onclick=""><a href="view_bill"><b>Fetch Bill Details</b></button></li>
+        <li><button onclick=""><a href="view_tables"><b>View Database </b></a></button></li>
+        <li><button onclick=""><a href="help" target="blank"><b>Help</b></a></button></li>
+    </div>
+    
+    <img src="{% static 'image/shop_name.jpg' %}" alt="shope name">
+    <div class="slider">
+        <div class="slider-track">
+            <img src="{% static 'image/pimage1.jpeg' %}" alt="Image 1">
+            <img src="{% static 'image/pimage2.webp' %}" alt="Image 2">
+            <img src="{% static 'image/pimage3.webp' %}" alt="Image 3">
+            <img src="{% static 'image/pimage4.webp' %}" alt="Image 4">
+            <img src="{% static 'image/pimage5.webp' %}" alt="Image 5">
+            <img src="{% static 'image/pimage6.webp' %}" alt="Image 6">
+            <img src="{% static 'image/pimage7.webp' %}" alt="Image 7">
+            <img src="{% static 'image/pimage8.webp' %}" alt="Image 8">
+            <img src="{% static 'image/pimage9.webp' %}" alt="Image 9">
+            <img src="{% static 'image/pimage10.webp' %}" alt="Image 10">
+        </div>
+    </div>
+  
+</body>
+</html>

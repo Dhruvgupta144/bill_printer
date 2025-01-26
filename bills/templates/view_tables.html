@@ -1,0 +1,122 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'view_tables144.css' %}">
+</head>
+<body>
+    <button class="showdatabase" id="showcustomerdatabase" onclick="showcustomerdatabase()"><b>View Customers Database</b></button>
+    <button class="showdatabase" id="showproductdatabase" onclick="showproductdatabase()"><b>View Products Database</b></button>
+    <h1 id="cdatabaseheading">Customer Database</h1>
+    <button class="showdatabase","sshowdatabase" id="bcreatecustomer" onclick="createcustomer()"><b>Create Customer </b></button>
+    <button class="showdatabase","sshowdatabase" id="bdeletecustomer" onclick="deletecustomer()"><b>Delete Customer</b> </button>
+    <h1 id="pdatabaseheading">Product Database</h1>
+    <button class="showdatabase","sshowdatabase" id="bregisterproduct" onclick="registerproduct()"><b>Register Product</b> </button>
+    <button class="showdatabase","sshowdatabase" id="bdeleteproduct" onclick="deleteproduct()"><b>Delete Product </b></button>
+    
+    <form name="CustomerRegister" action="/bills/insert_customer/" method="post" id="registercustomer">
+        <h1>Customers Registration Form</h1>
+        {% csrf_token %}
+        <label>Customer Name:</label> <br>
+        <input type="text" name="name" required><br><br>
+        <label>Address:</label> <br>
+        <input type="text" name="address" required><br><br>
+        <label>Phone Number:</label><br>
+        <input type="tel" name="phone" pattern="[0-9]{10}" placeholder="1234567890"required><br><br>
+        <label>Email:</label><br>
+        <input type="email" name="email" ><br><br>
+        <input type="submit" class="submit" value="Customer Register">
+    </form>
+
+    
+    <form name="Delete Customer" action="/bills/delete_customer/" method="post" id="deletecustomer">
+        <h1>Delete Customer</h1>
+        {% csrf_token %}
+        <label>Customer Name:</label> <br>
+        <input type="text" id="name" name="name" required><br><br>
+        <label>Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+        <input type="submit" class="submit" value="Delete Customer">
+    </form>
+
+    
+    <form name="ProductRegister" action="/bills/insert_product/" method="post" id="registerproduct">
+        <h1>Products Register Form</h1>
+        {% csrf_token %}
+        <label>Product Name:</label><br>
+        <input type="text" name="productname" required><br><br>
+        <label>Price:</label><br>
+        <input type="text" name="price" required><br><br>
+        <label>Discount:</label><br>
+        <input type="text" name="discount" required><br><br>
+        <label>Unit:</label><br><br>
+        <select name="unit" size="2" required>
+            <option value="pieces">Pieces</option>
+            <option value="dozen">Dozen</option>
+        </select><br><br>
+        <input type="submit" class="submit" value="Product Register">
+    </form>
+  
+    
+    <form name="Delete Product" action="/bills/delete_product/" method="post" id="deleteproduct">
+        <h1>Delete Product</h1>
+        {% csrf_token %}
+        <label>Product Name:</label> <br>
+        <input type="text" id="name" name="name" required><br><br>
+        <input type="submit" class="submit" value="Delete Product">
+    </form>
+
+
+    <h1>Database</h1>
+<div id="customerdatabase">
+    <input type="text" id="nameSearch" class="search" placeholder="Search for names..." onkeyup="filterTable()">
+    <table id="customers">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Phone</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for use in customers %}
+            <tr>
+                <td class="username">{{use.name}}</td>
+                <td>{{use.address}}</td>
+                <td>{{use.phone}}</td>
+                <td>{{use.email}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div id="productdatabase">
+    <input type="text" id="productNameSearch" class="search" placeholder="Search for product names..." onkeyup="filterProductTable()">
+    <table id="products">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Discount</th>
+                <th>Unit</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for use in productdata %}
+            <tr>
+                <td>{{use.product_name}}</td>
+                <td>{{use.price}}</td>
+                <td>{{use.discount}}</td>
+                <td>{{use.unit}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+    <script src="{% static 'view_tables144.js' %}"></script>
+</body>
+</html> 

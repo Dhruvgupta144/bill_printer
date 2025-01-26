@@ -1,0 +1,109 @@
+    body {
+        background: rgb(38, 99, 160);
+    }
+    
+    .showdatabase {
+        background: rgba(167, 242, 247, 0.689);
+        z-index: 1000;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.603);
+        color: black;
+        border: 1px solid white;
+        margin-left: 20%;
+        margin-right: 10%;
+        padding: 15px 30px;
+        border-radius: 10px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .showdatabase:hover {
+        background-color: rgba(97, 143, 146, 0.689);
+    }
+    
+    .sshowdatabase {
+        margin-left: 40%;
+    }
+    
+    h1 {
+        text-align: center;
+        background-color: #014a93;
+    }
+    
+    label {
+        font-size: large;
+        margin-left: 2%;
+        color: aliceblue;
+    }
+    
+    input {
+        padding: 1rem;
+        padding-left: 1rem;
+        text-align: center;
+        margin: 15px 0px;
+        border-radius: 2rem;
+        padding-left: 5px;
+        border: 1px solid black;
+        max-height: 100px;
+        width: 50%;
+        transition: max-height 0.5s;
+        overflow: hidden;
+        font-size: large;
+    }
+    
+    select {
+        width: 50%;
+        font-size: large;
+        text-align: center;
+    }
+    
+    .submit {
+        margin-left: 15%;
+        width: 20%;
+        cursor: pointer;
+    }
+    
+    .submit:hover {
+        background-color: rgba(201, 206, 209, 0.742);
+    }
+    
+    .search {
+        text-align: left;
+    }
+    
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+    
+    table,
+    th,
+    td {
+        border: 1px solid #ddd;
+    }
+    
+    th,
+    td {
+        padding: 10px;
+        text-align: center;
+    }
+    
+    th {
+        background-color: #014a93;
+    }
+    
+    #productdatabase,
+    #customerdatabase,
+    #deleteproduct,
+    #registerproduct,
+    #deletecustomer,
+    #registercustomer,
+    #bcreatecustomer,
+    #bdeletecustomer,
+    #bregisterproduct,
+    #bdeleteproduct,
+    #pdatabaseheading,
+    #cdatabaseheading {
+        display: none;
+    }

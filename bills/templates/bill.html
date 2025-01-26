@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill Generator</title>
+    <link rel="stylesheet" href="{% static 'billingbill144.css' %}">
+    <script>
+       
+    </script>
+</head>
+<body>
+    <div class="container">
+        <img src="{% static 'image/shop_name.jpg' %}" alt="shope name">
+        <!-- Header Section -->
+        <table class="d1">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Name</th>
+                    <th>address</th>
+                    <th>phone</th>
+                    <th>email</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for use in customers %}
+                <tr>
+                    <td>{{use.id}}</td>
+                    <td class="username">{{use.name}}</td>
+                    <td>{{use.address}}</td>
+                    <td>{{use.phone}}</td>
+                    <td>{{use.email}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <table class="d">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>product Name</th>
+                    <th>price</th>
+                    <th>discount</th>
+                    <th>unit</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for use in productdata %}
+                <tr>
+                    <td>{{use.id}}</td>
+                    <td>{{use.product_name}}</td>
+                    <td>{{use.price}}</td>
+                    <td>{{use.discount}}</td>
+                    <td>{{use.unit}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+        <div class="header">
+            <form method="post" action="/bills/send_email_page/">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td>Bill Number:</td>
+                    <td><input type="text" name="bill_number" id="bill-number" readonly required></td>
+                    <td>Date:</td>
+                    <td><input type="date" name="bill_date" id="bill-date" readonly required></td>
+                </tr>
+                <tr>
+                    <td>Name:</td>
+                    <td><input type="text" name="customer_name" placeholder="Enter Name" id="nameInput" required></td>
+                    <td>Address:</td>
+                    <td><input type="text" placeholder="Enter Address"id="addressInput" required></td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td><input type="email" name="customer_email" placeholder="Enter Email"id="emailInput" required></td>
+                    <td>Mobile:</td>
+                    <td><input type="text" placeholder="Enter Mobile" id="mobileInput" required></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Items Table -->
+        <table id="items-table">
+            <thead>
+                <tr>
+                    <th>Serial Number</th>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Unit</th>
+                    <th>Rate</th>
+                    <th>Discount (%)</th>
+                    <th>Additional Discount (%) </th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <b><input type="button" class="btn "  onclick="addRow()" value="Enter"></b>
+
+        <!-- Footer Section -->
+        <div class="footer">
+            <div class="total-block">
+                <label for="total-amount">Total Amount:</label>
+                <input type="text" name="total_amount" id="total-amount" readonly required >
+            </div>
+            <input type="button" id="submit"  class="btn" onclick="printBill()" value="Print & Save">
+            <button class="btn" type="submit"><b>Generate Email</b></button>
+        </div>
+    </div>
+</form>
+    <script src="{% static 'billingbill144.js' %}"></script>
+</body>
+</html>
